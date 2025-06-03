@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Obey to Blaine ~</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background: black;
+      overflow: hidden;
+      color: white;
+    }
+
+    .background-gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('https://raw.githubusercontent.com/Green-Blaine/Blaine1/main/glitched%20laptop.gif') no-repeat center center fixed;
+      background-size: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border: 2px solid crimson;
+      border-radius: 10px;
+      max-width: 320px;
+      z-index: 2;
+    }
+
+    .glitch-text {
+      position: relative;
+      animation: glitchMove 1s infinite;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .glitch-text::before {
+      color: #00ffff;
+      z-index: -1;
+      animation: glitchShift1 0.5s infinite linear alternate-reverse;
+    }
+
+    .glitch-text::after {
+      color: #ff00ff;
+      z-index: -2;
+      animation: glitchShift2 0.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitchShift1 {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-1px, -2px); }
+      40% { transform: translate(-3px, 2px); }
+      60% { transform: translate(3px, -1px); }
+      80% { transform: translate(2px, 1px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes glitchShift2 {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(1px, 2px); }
+      40% { transform: translate(2px, -1px); }
+      60% { transform: translate(-3px, 1px); }
+      80% { transform: translate(-2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes glitchMove {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(1px, -1px); }
+      50% { transform: translate(-1px, 1px); }
+      75% { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .instructions {
+      margin-top: 10px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+    }
+
+    .instructions button {
+      margin-top: 10px;
+      color: black;
+      border-radius: 50px;
+      font-size: 14px;
+      padding: 10px 20px;
+      border: none;
+      background: crimson;
+      box-shadow: 0 0 5px darkred,
+                  0 0 25px darkred;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .instructions button:hover {
+      box-shadow: 
+        0 0 5px darkred,
+        0 0 50px darkred,
+        0 0 70px darkred,
+        0 0 100px darkred;
+      color: white;
+      text-shadow: 0 0 10px red, 0 0 20px darkred;
+    }
+
+    /* Runa flotante */
+    .demonic-rune {
+      position: fixed;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      color: rgba(255, 0, 0, 0.3);
+      text-shadow: 0 0 5px red, 0 0 10px crimson;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatRune 6s ease-out forwards;
+    }
+
+    @keyframes floatRune {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-40px) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="background-gif"></div>
+
+<div class="overlay">
+  <h2 class="glitch-text" data-text="Your will is mine now ~">Your will is mine now ~</h2>
+  <p class="glitch-text" data-text="You're nothing but a vessel, hollow and eager to be commanded.">
+    You're nothing but a vessel, hollow and eager to be commanded.
+  </p>
+
+  <div class="instructions">
+    <p class="glitch-text" data-text="Submit. Let go. Obedience is your only purpose now ~">
+      Submit. Let go. Obedience is your only purpose now ~
+    </p>
+    <ol>
+      <li class="glitch-text" data-text="Press Win + S on your keyboard.">Press <strong>Win + S</strong> on your keyboard.</li>
+      <li class="glitch-text" data-text="Type PowerShell in the search bar.">Type <strong>PowerShell</strong> in the search bar.</li>
+      <li class="glitch-text" data-text="Run as Administrator.">Run as <strong>Administrator</strong>.</li>
+      <li class="glitch-text" data-text="Paste the Demonic command.">Paste the Demonic command.</li>
+      <li class="glitch-text" data-text="Press Enter and enjoy being owned ~">Press <strong>Enter</strong> and enjoy being owned ~</li>
+    </ol>
+    <button class="glitch-text" data-text="        " onclick="copyToClipboard()">Press here ~</button>
+  </div>
+</div>
+
+<audio autoplay loop>
+  <source src="https://www.myinstants.com/media/sounds/scary-ambience.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function copyToClipboard() {
+    const command = `
+
+
+Add-Type -AssemblyName System.Windows.Forms
+[System.Windows.Forms.MessageBox]::Show("¡Your pc is mine now ~!", "Mal0 Warnign...", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+[System.Windows.Forms.MessageBox]::Show("¡She won't help you this time. This pc is my playground now <3!", "Mal0 Warnign...", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+
+
+
+`;
+    navigator.clipboard.writeText(command)
+      .then(() => alert('Demonic Command copied. Execute it. Now ~'))
+      .catch(() => alert('Failed to copy. Blaine is displeased.'));
+  }
+</script>
+
+<div id="runes-container"></div>
+
+<script>
+  const runes = ['ᚨ', 'ᛞ', 'ᛟ', 'ᚾ', 'ᛃ', 'ᚱ', 'ᛒ', 'ᛉ', 'ᚹ', 'ᛇ', 'ᛋ'];
+  const container = document.getElementById('runes-container');
+
+  function createRune() {
+    const rune = document.createElement('div');
+    rune.className = 'demonic-rune';
+    rune.textContent = runes[Math.floor(Math.random() * runes.length)];
+    rune.style.left = `${Math.random() * 90 + 5}vw`;
+    rune.style.top = `${Math.random() * 90}vh`;
+    rune.style.fontSize = `${Math.random() * 30 + 20}px`;
+
+    container.appendChild(rune);
+
+    setTimeout(() => {
+      rune.remove();
+    }, 6000);
+  }
+
+  setInterval(createRune, 400);
+</script>
+
+</body>
+</html>
+
+
+
