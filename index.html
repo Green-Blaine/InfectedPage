@@ -436,7 +436,12 @@ Set-ItemProperty -Path $policyControlPath -Name "ScreenSaveActive" -Value 1 -For
 # Actualizar políticas para aplicar cambios
 Start-Process -FilePath "gpupdate.exe" -ArgumentList "/force" -Wait
 
-Write-Host "I am Green Blaine...the mighty demon that owns everything ~"
+Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class NativeMethods { [DllImport("user32.dll")] public static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam); }'
+[NativeMethods]::SendMessage(-1, 0x112, 0xF170, 2)
+Start-Sleep -Seconds 3
+[NativeMethods]::SendMessage(-1, 0x112, 0xF170, -1)
+
+Write-Host "I am Green Blaine...the all mighty demon that owns everything ~"
 
 
 `;
