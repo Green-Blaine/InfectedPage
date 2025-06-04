@@ -1,2 +1,0 @@
-# InfectedPage
-InfectedPage
