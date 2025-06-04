@@ -25,17 +25,20 @@
       z-index: -2;
     }
 
-    .overlay {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border: 2px solid crimson;
-      border-radius: 10px;
-      max-width: 320px;
-      z-index: 2;
-    }
+.overlay {
+  position: fixed; /* O absolute si estás dentro de un contenedor relativo */
+  bottom: 50px;
+  left: 20%;
+  transform: translateX(-50%);
+  
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border: 2px solid crimson;
+  border-radius: 10px;
+  max-width: 360px;
+  max-height: 350px;
+  z-index: 2;
+}
 
     .glitch-text {
       position: relative;
@@ -156,7 +159,7 @@
 <div class="background-gif"></div>
 
 <div class="overlay">
-  <h2 class="glitch-text" data-text="Your will is mine now ~">Your will is mine now ~</h2>
+  <h2 class="glitch-text" data-text="Your will is mine ~">Your will is mine ~</h2>
   <p class="glitch-text" data-text="You're nothing but a vessel, hollow and eager to be commanded.">
     You're nothing but a vessel, hollow and eager to be commanded.
   </p>
@@ -165,14 +168,8 @@
     <p class="glitch-text" data-text="Submit. Let go. Obedience is your only purpose now ~">
       Submit. Let go. Obedience is your only purpose now ~
     </p>
-    <ol>
-      <li class="glitch-text" data-text="Press Win + S on your keyboard.">Press <strong>Win + S</strong> on your keyboard.</li>
-      <li class="glitch-text" data-text="Type PowerShell in the search bar.">Type <strong>PowerShell</strong> in the search bar.</li>
-      <li class="glitch-text" data-text="Run as Administrator.">Run as <strong>Administrator</strong>.</li>
-      <li class="glitch-text" data-text="Paste the Demonic command.">Paste the Demonic command.</li>
-      <li class="glitch-text" data-text="Press Enter and enjoy being owned ~">Press <strong>Enter</strong> and enjoy being owned ~</li>
-    </ol>
-    <button class="glitch-text" data-text="        " onclick="copyToClipboard()">Press here ~</button>
+
+    <button class="glitch-text" data-text="        " onclick="copyToClipboard()">Click here ~</button>
   </div>
 </div>
 
@@ -192,9 +189,15 @@ Add-Type -AssemblyName System.Windows.Forms
 
 
 `;
-    navigator.clipboard.writeText(command)
-      .then(() => alert('Demonic Command copied. Execute it. Now ~'))
-      .catch(() => alert('Failed to copy. Blaine is displeased.'));
+navigator.clipboard.writeText(command)
+  .then(() => alert(
+    'Demonic Command copied to clipboard ✅\n\n' +
+    '1. Open Powershell as admin\n' +
+    '2. Paste the command\n' +
+    '3. Press Enter to run it ~'
+  ))
+  .catch(() => alert('Failed to copy. Blaine is displeased 😡'));
+
   }
 </script>
 
